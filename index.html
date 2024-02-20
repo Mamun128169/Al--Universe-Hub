@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AI Universe Hub</title>
     <!-- tailwind and Daisy UI links -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.7.2/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <!-- Js scripts -->
     <script defer src="./scripts/app.js"></script>
-</head>
-<body class="w-full min-h-screen bg-slate-100">
+  </head>
+  <body class="w-full min-h-screen bg-slate-100">
     <!-- header section -->
-    <header class="container mx-auto flex flex-col justify-center items-center mb-10">
-        <h1 class="mt-7 mb-5 text-3xl font-bold text-gray-700">AI Universe Hub</h1>
-        <button id="sort-btn" class="btn btn-error text-white px-6">Sort By Date</button>
+    <header
+      class="container mx-auto flex flex-col justify-center items-center mb-10"
+    >
+      <h1 class="mt-7 mb-5 text-3xl font-bold text-gray-700">
+        AI Universe Hub
+      </h1>
+      <button id="sort-btn" class="btn btn-error text-white px-6">
+        Sort By Date
+      </button>
     </header>
 
     <!-- loading spinner -->
@@ -24,29 +34,50 @@
 
     <!-- main section -->
     <main class="container mx-auto">
-        <!-- card section -->
-        <section id="cards-container" class="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
-            <!-- card -->
-            <!-- <div class="card w-96 bg-base-100 shadow-xl">
-                <figure class="px-10 pt-10">
-                  <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
-                </figure>
-                <div class="card-body items-center text-center">
-                  <h2 class="card-title">Shoes!</h2>
-                  <p>If a dog chews shoes whose shoes does he choose?</p>
-                  <div class="card-actions">
-                    <button class="btn btn-primary">Buy Now</button>
-                  </div>
-                </div>
-              </div> -->
-        </section>
+      <!-- card section -->
+      <section
+        id="cards-container"
+        class="grid justify-items-center grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+      ></section>
 
-        <!-- show All button -->
-        <div class="flex justify-center mt-6 mb-10 my-5">
-            <button id="show-all-btn" class="hidden mt-6 mb-10 btn btn-error px-7 text-white">
-                Show All
-            </button>
+      <!-- modal part -->
+      <!-- Open the modal using ID.showModal() method -->
+      <!-- <button class="btn" onclick="AI_Tool_Modal.showModal()">open modal</button> -->
+      <dialog id="AI_Tool_Modal" class="modal modal-bottom sm:modal-middle">
+        <div id="modal-box" class="modal-box">
+         
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+          </div>
         </div>
+      </dialog>
+
+      <!-- demo card -->
+      <!-- <div class="card w-96 bg-base-100 shadow-xl">
+        <figure class="px-10 pt-10">
+          <img src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg" alt="Shoes" class="rounded-xl" />
+        </figure>
+        <div class="card-body items-center text-center">
+          <h2 class="card-title">Shoes!</h2>
+          <p>If a dog chews shoes whose shoes does he choose?</p>
+          <div class="card-actions">
+            <button class="btn btn-primary">Buy Now</button>
+          </div>
+        </div>
+      </div> -->
+
+      <!-- show All button -->
+      <div class="flex justify-center mt-6 mb-10 my-5">
+        <button
+          id="show-all-btn"
+          class="hidden mt-6 mb-10 btn btn-error px-7 text-white"
+        >
+          Show All
+        </button>
+      </div>
     </main>
-</body>
+  </body>
 </html>
