@@ -115,47 +115,74 @@ const url = `https://openapi.programming-hero.com/api/ai/tools`;
 
 
 const displayModalData = (data) => {
-  const modalBoxContainer = document.getElementById("modal-box");
+  let modalBoxContainer = document.getElementById("modal-box");
 
-  const {description, pricing, features, integrations } = data;
+  // initially clear the previous modal
+  modalBoxContainer.innerHTML = "";
+
+  const {description, pricing, features, integrations, image_link: img, input_output_examples: examples } = data;
 
   const featuresArr = Object.values(features);
-  console.log(featuresArr);
  
   modalBoxContainer.innerHTML = `
-    <div class=" mx-3 border border-red-500 p-6 rounded bg-rose-100">
-      <h2 class="text-xl mb-4 font-bold">${description}</h2>
-      <div class="flex items-center justify-center gap-2">
-        ${
-          pricing.map((val) => `<div class="p-3 my-3 cursor-pointer text-center text-sm font-bold text-green-700 bg-slate-100 rounded-lg">
-           <p>${val.price}</p>
-           <p>${val.plan}</P>
-          </div>`).join("")
-        }
-      </div>
-      <div class="flex justify-between">
-        <div class="my-5">
-          <h2 class="text-xl font-bold my-4">Features</h2>
-          <ul class="list-disc text-base text-gray-600 pl-5"> 
-            ${
-              featuresArr.map(val => `<li>${val.feature_name}</li>`).join("")
-            }
-          </ul> 
-        </div>
-        <div class="my-5">
-          <h2 class="text-xl font-bold my-4">Integrations</h2>
-          <ul class="list-disc text-base text-gray-600 pl-5"> 
-            ${
-              integrations.map(val => `<li>
-              ${val}
-              </li>`).join("")
-            }
-          </ul> 
-        </div>
-      </div> 
+<div class="p-[60px] flex-wrap lg:flex-nowrap flex justify-center items-center gap-3">
+  <div class=" mx-3 border border-red-500 p-6 rounded-md bg-rose-50">
+    <h2 class="text-xl mb-4 font-bold">${description}</h2>
+    <div class="flex items-center justify-center gap-2">
+      ${
+        pricing.map((val) => `<div class="p-3 my-3 cursor-pointer text-center text-sm font-bold text-green-700 bg-slate-50 rounded-lg">
+         <p>${val.price}</p>
+         <p>${val.plan}</P>
+        </div>`).join("")
+      }
     </div>
-  `
-}
+    <div class="flex justify-between">
+      <div class="my-5">
+        <h2 class="text-xl font-bold my-4">Features</h2>
+        <ul class="list-disc text-base text-gray-600 pl-5"> 
+          ${
+            featuresArr.map(val => `<li>${val.feature_name}</li>`).join("")
+          }
+        </ul> 
+      </div>
+      <div class="my-5">
+        <h2 class="text-xl font-bold my-4">Integrations</h2>
+        <ul class="list-disc text-base text-gray-600 pl-5"> 
+          ${
+            integrations.map(val => `<li>
+            ${val}
+            </li>`).join("")
+          }
+        </ul> 
+      </div>
+    </div> 
+  </div>
+
+
+  <div class=" mx-3 border-2 border-gray-300 p-6 rounded bg-white">
+  <figure class="">
+    <img src="${img[0]}" class="rounded-xl" />
+  </figure>
+
+  <div class="my-5">
+    <h2 class="text-xl font-bold text-black my-3">
+     ${examples[0].input}
+    </h2>
+    <span class="text-sm text-gray-800 font-medium">
+     ${examples[0].output}
+    </span>
+  </div>
+    
+  </div>
+</div>
+    <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
+    </div>
+  `;
+};
 
 const handleShowModal = async (id) => {
   const url = `https://openapi.programming-hero.com/api/ai/tool/${id}`;
